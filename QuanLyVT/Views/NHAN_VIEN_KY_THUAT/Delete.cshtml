@@ -1,0 +1,57 @@
+﻿@model QuanLyVT.Models.NHAN_VIEN_KY_THUAT
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>NHAN_VIEN_KY_THUAT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_NV_KT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_NV_KT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_NV_KT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_NV_KT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chuc_Vu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chuc_Vu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.So_Dien_Thoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.So_Dien_Thoai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

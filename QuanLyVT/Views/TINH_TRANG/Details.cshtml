@@ -1,0 +1,35 @@
+﻿@model QuanLyVT.Models.TINH_TRANG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TINH_TRANG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_TT_LK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_TT_LK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_TT_LK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_TT_LK)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_TINHTRANG }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

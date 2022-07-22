@@ -1,0 +1,120 @@
+﻿@model QuanLyVT.Models.BENH_VIEN
+
+@{
+    ViewBag.Title = "Chi Tiết";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h5><b>Trang chủ > Bệnh viện/Đối tác > Thông tin chi tiết</b></h5>
+
+
+@*<div>
+    <h4>BENH_VIEN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_BV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_BV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_BV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_BV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dia_Chi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dia_Chi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fax)
+        </dd>
+
+    </dl>
+</div>*@
+
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_BENH_VIEN }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
+
+
+<div>
+    <h3><b>THÔNG TIN CHI TIẾT</b></h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Mã Bệnh viện/Đối tác</label>
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Ten_BV)*@
+            @Html.EditorFor(model => model.Ma_BV, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style=" margin: 5px" } })
+        </dd>
+        <dt>
+            <label>Tên Bệnh viện/Đối tác</label>
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Ten_BV)*@
+            @Html.EditorFor(model => model.Ten_BV, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+        <dt>
+            <label>Địa Chỉ</label>
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Dia_Chi)*@
+            @Html.EditorFor(model => model.Dia_Chi, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+        <dt>
+            <label>Số Điện Thoại</label>
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.SDT)*@
+            @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+        <dt>
+            <label>Fax</label>
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Fax)*@
+            @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.ID_BENH_VIEN }, new { @class = "btn btn-warning", Styles = "color:white" }) |
+    <button class="btn btn-erorr" style="color: white">
+        @Html.ActionLink("Quay lại", "Index", new { @class = "btn btn-warning", Styles = "color:white !important" })
+    </button>
+</p>

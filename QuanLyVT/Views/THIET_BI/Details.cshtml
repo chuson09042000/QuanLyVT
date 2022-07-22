@@ -1,0 +1,75 @@
+﻿@model QuanLyVT.Models.THIET_BI
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>THIET_BI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BENH_VIEN.Ma_BV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BENH_VIEN.Ma_BV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GOI_THAU.Ma_Goi_Thau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GOI_THAU.Ma_Goi_Thau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LINH_KIEN.Ma_So_LK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LINH_KIEN.Ma_So_LK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_TB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_TB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_TB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_TB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.XX_TC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.XX_TC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nam_SX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nam_SX)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_THIET_BI }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

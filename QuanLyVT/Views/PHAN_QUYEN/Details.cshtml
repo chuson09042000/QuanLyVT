@@ -1,0 +1,35 @@
+﻿@model QuanLyVT.Models.PHAN_QUYEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PHAN_QUYEN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_Phan_Quyen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_Phan_Quyen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_Quyen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_Quyen)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_PHAN_QUYEN }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

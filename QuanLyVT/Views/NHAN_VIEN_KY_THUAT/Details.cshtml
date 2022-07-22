@@ -1,0 +1,51 @@
+﻿@model QuanLyVT.Models.NHAN_VIEN_KY_THUAT
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NHAN_VIEN_KY_THUAT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_NV_KT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_NV_KT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_NV_KT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_NV_KT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chuc_Vu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chuc_Vu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.So_Dien_Thoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.So_Dien_Thoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_NHAN_VIEN_KY_THUAT }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,171 @@
+﻿@model IEnumerable<QuanLyVT.Models.HOP_DONG>
+
+@{
+    ViewBag.Title = "Hợp đồng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5><b>Trang chủ / Hợp đồng</b></h5>
+
+<p>
+
+    <button type="button" class="btn btn-success">
+        @Html.ActionLink("Thêm Mới", "Create", new { @class = "btn btn-success" }, new { @style = "color:white !important" })
+    </button>
+</p>
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BENH_VIEN.Ma_BV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGUOI_PHU_TRACH.Ma_Nguoi_Phu_Trach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NHAN_VIEN_KY_THUAT.Ma_NV_KT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.THIET_BI.Ma_TB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ma_HD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngay_Hoan_Thanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Han_BH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ghi_Chu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BENH_VIEN.Ma_BV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGUOI_PHU_TRACH.Ma_Nguoi_Phu_Trach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHAN_VIEN_KY_THUAT.Ma_NV_KT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.THIET_BI.Ten_TB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ma_HD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngay_Hoan_Thanh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Han_BH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ghi_Chu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_HOP_DONG }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_HOP_DONG }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_HOP_DONG })
+            </td>
+        </tr>
+    }
+
+</table>*@
+
+<table id="myTable" class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Số hợp đồng
+            </th>
+            <th>
+                Tên hợp đồng
+            </th>
+            <th>
+                Ngày hoàn thành
+            </th>
+            <th>
+                Hạn bảo hành
+            </th>
+            <th>
+                Tên thiết bị
+            </th>
+            <th>
+                Tên bện viện/ đối tác
+            </th>
+            <th>
+                Tên người phụ trách
+            </th>
+            <th>
+                Tên nhân viên kỹ thuật
+            </th>
+            <th>
+                Ghi chú
+            </th>
+            <th>
+                File
+            </th>
+            <th style="text-align: center">
+                Thao tác
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ma_HD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TEN_HD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngay_Hoan_Thanh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Han_BH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.THIET_BI.Ten_TB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BENH_VIEN.Ten_BV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGUOI_PHU_TRACH.Ten_Nguoi_Phu_Trach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHAN_VIEN_KY_THUAT.Ten_NV_KT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ghi_Chu)
+            </td>
+            <td>
+                <a href="UploadedFiles\@Html.DisplayFor(modelItem => item.FileName)" download> @Html.DisplayFor(modelItem => item.FileName)</a>
+            </td>
+            <td style="width: 300px">
+                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.ID_HOP_DONG }, new { @class = "btn btn-warning", Styles = "color:white; with: 90px !important" })
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.ID_HOP_DONG }, new { @class = "btn btn-info", Styles = "color:white" })
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ID_HOP_DONG }, new { @class = "btn btn-danger", Styles = "color:white" })
+                @Html.ActionLink("Tải File", "UploadFile", new { id = item.ID_HOP_DONG }, new { @class = "btn btn-success", Styles = "color:white; with: 60px !important" })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

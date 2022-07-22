@@ -1,0 +1,178 @@
+﻿@model QuanLyVT.Models.HOP_DONG
+
+@{
+    ViewBag.Title = "Chi tiết";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5><b>Trang chủ > Hợp đồng > Thông tin chi tiết</b></h5>
+
+<div>
+    <h4><b>THÔNG TIN CHI TIẾT</b></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BENH_VIEN.Ma_BV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BENH_VIEN.Ma_BV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGUOI_PHU_TRACH.Ma_Nguoi_Phu_Trach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGUOI_PHU_TRACH.Ma_Nguoi_Phu_Trach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NHAN_VIEN_KY_THUAT.Ma_NV_KT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHAN_VIEN_KY_THUAT.Ma_NV_KT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THIET_BI.Ma_TB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THIET_BI.Ma_TB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_HD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_HD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngay_Hoan_Thanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngay_Hoan_Thanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Han_BH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Han_BH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ghi_Chu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ghi_Chu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileName)
+        </dd>
+       
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Số hợp đồng</label>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ma_HD, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+        <dt>
+            <label>Tên hợp đồng</label>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TEN_HD, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+        <dt>
+            <label>Tên bệnh viện/ đối tác</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BENH_VIEN.Ten_BV, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+        <dt>
+            <label>Ngày hoàn thành</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngay_Hoan_Thanh, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+        <dt>
+            <label>Hạn bảo hành</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Han_BH, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+
+
+
+
+        <dt>
+            <label>Người phụ trách</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGUOI_PHU_TRACH.Ten_Nguoi_Phu_Trach, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+        <dt>
+            <label>Nhân viên kỹ thuật</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHAN_VIEN_KY_THUAT.Ten_NV_KT, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+        <dt>
+            <label>Thiết bị</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THIET_BI.Ten_TB, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+        <dt>
+            <label>Ghi chú</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ghi_Chu, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+        <dt>
+            <label>File Name</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ID_HOP_DONG }) |
+    @Html.ActionLink("Back to List", "Index")*@
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.ID_HOP_DONG }, new { @class = "btn btn-warning", Styles = "color:white" }) |
+    <button class="btn btn-erorr" style="color: white">
+        @Html.ActionLink("Quay lại", "Index", new { @class = "btn btn-warning", Styles = "color:white !important" })
+    </button>
+</p>

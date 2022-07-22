@@ -1,0 +1,23 @@
+﻿@model QuanLyVT.Models.HOP_DONG
+@{
+    ViewBag.Title = "UploadFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Tải tệp tin</h2>
+@using (Html.BeginForm("UploadFile", "HOP_DONG", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        @Html.HiddenFor(model => model.ID_HOP_DONG)
+        @Html.TextBox("file", "", new { type = "file" }) <br />
+        <input type="submit" value="Upload" />
+        @ViewBag.Message
+    </div>
+    <div style=" text-align: center">
+        <button class="btn btn-error" style="color: white">
+            @Html.ActionLink("Quay lại", "Index", new { @class = "btn btn-warning", Styles = "color:white !important" })
+        </button>
+    </div>
+
+}

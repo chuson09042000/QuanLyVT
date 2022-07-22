@@ -1,0 +1,43 @@
+﻿@model QuanLyVT.Models.GOI_THAU
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GOI_THAU</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_Goi_Thau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_Goi_Thau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_Goi_Thau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_Goi_Thau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Du_An)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Du_An)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_GOI_THAU }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

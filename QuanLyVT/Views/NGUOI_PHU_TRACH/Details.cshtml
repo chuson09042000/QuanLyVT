@@ -1,0 +1,67 @@
+﻿@model QuanLyVT.Models.NGUOI_PHU_TRACH
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NGUOI_PHU_TRACH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_Nguoi_Phu_Trach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_Nguoi_Phu_Trach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_Nguoi_Phu_Trach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_Nguoi_Phu_Trach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma_BV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma_BV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chuc_Vu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chuc_Vu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.So_Dien_Thoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.So_Dien_Thoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_BENH_VIEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_BENH_VIEN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_NGUOI_PHU_TRACH }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
