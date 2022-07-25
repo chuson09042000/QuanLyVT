@@ -47,7 +47,7 @@ namespace QuanLyVT.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_NGUOI_PHU_TRACH,Ma_Nguoi_Phu_Trach,Ten_Nguoi_Phu_Trach,Ma_BV,Chuc_Vu,So_Dien_Thoai,Ten_BV")] NGUOI_PHU_TRACH nGUOI_PHU_TRACH)
+        public ActionResult Create([Bind(Include = "ID_NGUOI_PHU_TRACH,Ma_Nguoi_Phu_Trach,Ten_Nguoi_Phu_Trach,Ma_BV,Chuc_Vu,So_Dien_Thoai,ID_BENH_VIEN")] NGUOI_PHU_TRACH nGUOI_PHU_TRACH)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +56,7 @@ namespace QuanLyVT.Controllers
                 return RedirectToAction("Index");
             }
             //ViewBag.ID_THIET_BI = new SelectList(db.HOP_DONG, "ID_THIET_BI", "Ten_TB", nGUOI_PHU_TRACH.ID_HOP_DONG);
+            ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV", nGUOI_PHU_TRACH.ID_BENH_VIEN);
             return View(nGUOI_PHU_TRACH);
         }
 

@@ -1,41 +1,63 @@
 ﻿@model QuanLyVT.Models.DVT
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Xóa";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<br />
+<h5><b>Trang chủ > Đơn vị tính > Xóa thông tin</b></h5>
 <div>
-    <h4>DVT</h4>
-    <hr />
+    <h3><b>Bạn có chắc chắn muốn xóa bản ghi này không?</b></h3>
+    @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Ma_DVT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ma_DVT)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Ten_DVT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ten_DVT)
+            </dd>
+
+        </dl>*@
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Ma_DVT)
+            <label>Mã đơn vị tính</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ma_DVT)
-        </dd>
 
+            @Html.EditorFor(model => model.Ma_DVT, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Ten_DVT)
+            <label>Tên đơn vị tính</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ten_DVT)
+
+            @Html.EditorFor(model => model.Ten_DVT, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
         </dd>
+
+       
 
     </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            <button type="button" class="btn btn-secondary">
+                @Html.ActionLink("Quay lại", "Index", new { @class = "btn btn-warning" }, new { @style = "color:blue !important" })
+            </button>
         </div>
     }
 </div>

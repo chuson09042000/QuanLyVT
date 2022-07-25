@@ -1,31 +1,64 @@
 ﻿@model QuanLyVT.Models.TINH_TRANG
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Thêm mới";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h5><b>Trang chủ > Tình trạng > Thêm mới</b></h5>
 
 
-@using (Html.BeginForm()) 
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
+    @*<div class="form-horizontal">
+            <h4>TINH_TRANG</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ma_TT_LK, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Ma_TT_LK, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ma_TT_LK, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ten_TT_LK, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Ten_TT_LK, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ten_TT_LK, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>*@
+
     <div class="form-horizontal">
-        <h4>TINH_TRANG</h4>
+        <h3><b>Thêm mới thông tin tình trạng</b></h3>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Ma_TT_LK, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="control-label col-md-2">Mã tình trạng</div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Ma_TT_LK, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Ma_TT_LK, "", new { @class = "text-danger" })
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    <h5 style="color:red">@ViewBag.ErrorMessage</h5>
+                }
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Ten_TT_LK, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">Tên tình trạng</div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Ten_TT_LK, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Ten_TT_LK, "", new { @class = "text-danger" })
@@ -34,14 +67,16 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Thêm Mới" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn btn-error" style="color: white">
+        @Html.ActionLink("Quay lại", "Index", new { @class = "btn btn-warning", Styles = "color:white !important" })
+    </button>
 </div>
 
 @section Scripts {

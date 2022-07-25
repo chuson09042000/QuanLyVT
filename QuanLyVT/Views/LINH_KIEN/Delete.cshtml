@@ -1,73 +1,189 @@
 ﻿@model QuanLyVT.Models.LINH_KIEN
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Xóa";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<br />
+<h5><b>Trang chủ >  Linh kiện > Xóa thông tin</b></h5>
 
-<h3>Are you sure you want to delete this?</h3>
+<!--<div>
+    <h3><b>Bạn có chắc chắn muốn xóa bản ghi này không?</b></h3>-->
+    @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DVT.Ma_DVT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DVT.Ma_DVT)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TINH_TRANG.Ma_TT_LK)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TINH_TRANG.Ma_TT_LK)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Ma_So_LK)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ma_So_LK)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Ten_LK)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ten_LK)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.XX_TC)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.XX_TC)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nam_SX)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nam_SX)
+            </dd>
+
+        </dl>*@
+
+    @*<dl class="dl-horizontal">
+            <dt>
+                <label>Mã linh kiện</label>
+            </dt>
+
+            <dd>
+
+                @Html.EditorFor(model => model.Ma_So_LK, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+            </dd>
+            <dt>
+                <label>Tên linh kiện</label>
+            </dt>
+
+            <dd>
+
+                @Html.EditorFor(model => model.Ten_LK, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+            </dd>
+
+            <dt>
+                <label>Xuất xứ</label>
+            </dt>
+
+            <dd>
+
+                @Html.EditorFor(model => model.XX_TC, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+            </dd>
+            <dt>
+                <label>Năm sản xuất</label>
+            </dt>
+
+            <dd>
+
+                @Html.EditorFor(model => model.Nam_SX, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+            </dd>
+            <dt>
+                <label>Tình trạng</label>
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => model.TINH_TRANG.Ten_TT_LK, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+
+            </dd>
+            <dt>
+                <label>Đơn vị tính</label>
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => model.DVT.Ten_DVT, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+
+            </dd>
+
+
+        </dl>*@
+
+
+
+
 <div>
-    <h4>LINH_KIEN</h4>
-    <hr />
+    <h3><b>Bạn có chắc chắn muốn xóa bản ghi này không?</b></h3>
+
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DVT.Ma_DVT)
+            <label>Mã người dùng</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DVT.Ma_DVT)
+
+            @Html.EditorFor(model => model.Ma_So_LK, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+        <dt>
+            <label>Tên người dùng</label>
+        </dt>
+
+        <dd>
+
+            @Html.EditorFor(model => model.Ten_LK, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TINH_TRANG.Ma_TT_LK)
+            <label>Mật khẩu</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TINH_TRANG.Ma_TT_LK)
+
+            @Html.EditorFor(model => model.XX_TC, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Ma_So_LK)
+            <label>Mật khẩu</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ma_So_LK)
+
+            @Html.EditorFor(model => model.Nam_SX, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Ten_LK)
+            <label>Quyền</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ten_LK)
+            @Html.EditorFor(model => model.TINH_TRANG.Ten_TT_LK, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+            @*@Html.EditorFor(model => model.PHAN_QUYEN.Ma_Phan_Quyen, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })*@
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.XX_TC)
+            <label>Quyền</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.XX_TC)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nam_SX)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nam_SX)
+            @Html.EditorFor(model => model.DVT.Ma_DVT, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+            @*@Html.EditorFor(model => model.PHAN_QUYEN.Ma_Phan_Quyen, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })*@
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            <button type="button" class="btn btn-secondary">
+                @Html.ActionLink("Quay lại", "Index", new { @class = "btn btn-warning" }, new { @style = "color:blue !important" })
+            </button>
         </div>
     }
 </div>

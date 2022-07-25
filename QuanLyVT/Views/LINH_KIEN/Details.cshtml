@@ -1,67 +1,131 @@
 ﻿@model QuanLyVT.Models.LINH_KIEN
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<br />
+<h5><b>Trang chủ > Linh kiện > Thông tin chi tiết</b></h5>
+
+@*<div>
+        <h4>LINH_KIEN</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DVT.Ma_DVT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DVT.Ma_DVT)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TINH_TRANG.Ma_TT_LK)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TINH_TRANG.Ma_TT_LK)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Ma_So_LK)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ma_So_LK)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Ten_LK)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ten_LK)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.XX_TC)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.XX_TC)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nam_SX)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nam_SX)
+            </dd>
+
+        </dl>
+    </div>*@
 
 <div>
-    <h4>LINH_KIEN</h4>
+    <h3><b>THÔNG TIN CHI TIẾT</b></h3>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DVT.Ma_DVT)
+            <label>Mã linh kiện</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DVT.Ma_DVT)
+
+            @Html.EditorFor(model => model.Ma_So_LK, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+        <dt>
+            <label>Tên linh kiện</label>
+        </dt>
+
+        <dd>
+
+            @Html.EditorFor(model => model.Ten_LK, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TINH_TRANG.Ma_TT_LK)
+            <label>Xuất xứ</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TINH_TRANG.Ma_TT_LK)
+
+            @Html.EditorFor(model => model.XX_TC, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Ma_So_LK)
+            <label>Năm sản xuất</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ma_So_LK)
+
+            @Html.EditorFor(model => model.Nam_SX, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Ten_LK)
+            <label>Tình trạng</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ten_LK)
+            
+            @Html.EditorFor(model => model.TINH_TRANG.Ten_TT_LK, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.XX_TC)
+            <label>Đơn vị tính</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.XX_TC)
+           
+            @Html.EditorFor(model => model.DVT.Ten_DVT, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nam_SX)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nam_SX)
-        </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_LINH_KIEN }) |
-    @Html.ActionLink("Back to List", "Index")
+
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.ID_LINH_KIEN }, new { @class = "btn btn-warning", Styles = "color:white" }) |
+    <button class="btn btn-erorr" style="color: white">
+        @Html.ActionLink("Quay lại", "Index", new { @class = "btn btn-warning", Styles = "color:white !important" })
+    </button>
 </p>

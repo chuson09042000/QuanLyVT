@@ -1,13 +1,14 @@
 ﻿@model QuanLyVT.Models.NGUOI_DUNG
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<br />
+<h5><b>Trang chủ > Người dùng > Thông tin chi tiết</b></h5>
 
-<div>
+@*<div>
     <h4>NGUOI_DUNG</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -44,8 +45,55 @@
         </dd>
 
     </dl>
+</div>*@
+
+<div>
+    <h3><b>THÔNG TIN CHI TIẾT</b></h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Mã người dùng</label>
+        </dt>
+
+        <dd>
+
+            @Html.EditorFor(model => model.Ma_Nguoi_Dung, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+        <dt>
+            <label>Tên người dùng</label>
+        </dt>
+
+        <dd>
+
+            @Html.EditorFor(model => model.Ten_Nguoi_Dung, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+        <dt>
+            <label>Mật khẩu</label>
+        </dt>
+
+        <dd>
+
+            @Html.EditorFor(model => model.Mat_Khau, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+        <dt>
+            <label>Quyền</label>
+        </dt>
+
+        <dd>
+            @*@Html.EditorFor(model => model.PHAN_QUYEN.Ma_Phan_Quyen, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })*@
+            @Html.EditorFor(model => model.PHAN_QUYEN.Ten_Quyen, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @style = " margin: 5px" } })
+        </dd>
+
+        
+
+    </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_NGUOI_DUNG }) |
-    @Html.ActionLink("Back to List", "Index")
+
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.ID_NGUOI_DUNG }, new { @class = "btn btn-warning", Styles = "color:white" }) |
+    <button class="btn btn-erorr" style="color: white">
+        @Html.ActionLink("Quay lại", "Index", new { @class = "btn btn-warning", Styles = "color:white !important" })
+    </button>
 </p>
