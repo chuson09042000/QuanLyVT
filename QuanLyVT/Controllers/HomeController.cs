@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuanLyVT.Common;
+using QuanLyVT.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,11 +28,37 @@ namespace QuanLyVT.Controllers
 
             return View();
         }
+        [HttpGet]
         public ActionResult Login()
         {
-            ViewBag.Message = "Your contact page.";
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(Login loginmodel)
+        {
+            //ViewBag.Message = "Your contact page.";
+            if (ModelState.IsValid)
+            {
+                var dao = new UserDAO();
+                var result = dao.Login(loginmodel.Username, loginmodel.Password);
+                if (result)
+                {
+                    var user = dao.GetByID(loginmodel.Username);
+                    var userSession = new UserLogin();
+                    userSession.UserName = user.Ma_Nguoi_Dung;
+                    userSession.UserID = user.ID_NGUOI_DUNG;
+                    Session.Add(Constants.USER_SESSION, userSession);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Đăng nhập thất bại!");
+                }
+            }
+
 
             return View();
+            //return View();
         }
     }
 }
