@@ -25,7 +25,7 @@ namespace QuanLyVT.Models
         [StringLength(50)]
         public string Ten_Nguoi_Phu_Trach { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(10)]
         public string Ma_BV { get; set; }
 
@@ -40,5 +40,7 @@ namespace QuanLyVT.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOP_DONG> HOP_DONG { get; set; }
+        public virtual BENH_VIEN BENH_VIEN { get; set; }
+
     }
 }

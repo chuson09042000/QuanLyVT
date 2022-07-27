@@ -17,7 +17,8 @@ namespace QuanLyVT.Controllers
         // GET: NGUOI_PHU_TRACH
         public ActionResult Index()
         {
-            return View(db.NGUOI_PHU_TRACH.ToList());
+            var nGUOI_PHU_TRACH = db.NGUOI_PHU_TRACH.Include(h => h.BENH_VIEN);
+            return View(nGUOI_PHU_TRACH.ToList());
         }
 
         // GET: NGUOI_PHU_TRACH/Details/5
@@ -38,7 +39,8 @@ namespace QuanLyVT.Controllers
         // GET: NGUOI_PHU_TRACH/Create
         public ActionResult Create()
         {
-            ViewBag.ID_HOP_DONG = new SelectList(db.HOP_DONG, "ID_HOP_DONG", "TEN_HD");
+            ViewBag.Ma_BV = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ma_BV");
+            ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV");
             return View();
         }
 
@@ -49,6 +51,7 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_NGUOI_PHU_TRACH,Ma_Nguoi_Phu_Trach,Ten_Nguoi_Phu_Trach,Ma_BV,Chuc_Vu,So_Dien_Thoai,ID_BENH_VIEN")] NGUOI_PHU_TRACH nGUOI_PHU_TRACH)
         {
+            nGUOI_PHU_TRACH.Ma_BV = "a";
             if (ModelState.IsValid)
             {
                 db.NGUOI_PHU_TRACH.Add(nGUOI_PHU_TRACH);
@@ -56,6 +59,7 @@ namespace QuanLyVT.Controllers
                 return RedirectToAction("Index");
             }
             //ViewBag.ID_THIET_BI = new SelectList(db.HOP_DONG, "ID_THIET_BI", "Ten_TB", nGUOI_PHU_TRACH.ID_HOP_DONG);
+            //ViewBag.Ma_BV = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ma_BV", nGUOI_PHU_TRACH.ID_BENH_VIEN);
             ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV", nGUOI_PHU_TRACH.ID_BENH_VIEN);
             return View(nGUOI_PHU_TRACH);
         }
@@ -72,6 +76,7 @@ namespace QuanLyVT.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV", nGUOI_PHU_TRACH.ID_BENH_VIEN);
             return View(nGUOI_PHU_TRACH);
         }
 
@@ -80,7 +85,7 @@ namespace QuanLyVT.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_NGUOI_PHU_TRACH,Ma_Nguoi_Phu_Trach,Ten_Nguoi_Phu_Trach,Ma_BV,Chuc_Vu,So_Dien_Thoai,Ten_BV")] NGUOI_PHU_TRACH nGUOI_PHU_TRACH)
+        public ActionResult Edit([Bind(Include = "ID_NGUOI_PHU_TRACH,Ma_Nguoi_Phu_Trach,Ten_Nguoi_Phu_Trach,Ma_BV,Chuc_Vu,So_Dien_Thoai,ID_BENH_VIEN")] NGUOI_PHU_TRACH nGUOI_PHU_TRACH)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +93,8 @@ namespace QuanLyVT.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV", nGUOI_PHU_TRACH.ID_BENH_VIEN);
             return View(nGUOI_PHU_TRACH);
         }
 

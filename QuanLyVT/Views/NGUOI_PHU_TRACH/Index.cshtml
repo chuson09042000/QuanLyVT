@@ -43,9 +43,9 @@
             <th>
                 Tên người phụ trách
             </th>
-            <th>
+            @*<th>
                 Mã bệnh viện
-            </th>
+            </th>*@
             <th>
                 Chức vụ
             </th>
@@ -70,9 +70,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Ten_Nguoi_Phu_Trach)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Ma_BV)
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Chuc_Vu)
                 </td>
@@ -80,7 +80,7 @@
                     @Html.DisplayFor(modelItem => item.So_Dien_Thoai)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ID_BENH_VIEN)
+                    @Html.DisplayFor(modelItem => item.BENH_VIEN.Ten_BV)
                 </td>
                 <td style="width: 250px; text-align: center">
                     @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.ID_NGUOI_PHU_TRACH }, new { @class = "btn btn-warning", Styles = "color:white" })

@@ -52,7 +52,7 @@ namespace QuanLyVT.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_HOP_DONG,Ma_HD,Ngay_Hoan_Thanh,Han_BH,Ghi_Chu,FileName,ID_THIET_BI,ID_BENH_VIEN,ID_NGUOI_PHU_TRACH,ID_NHAN_VIEN_KY_THUAT")] HOP_DONG hOP_DONG)
+        public ActionResult Create([Bind(Include = "ID_HOP_DONG,Ma_HD,TEN_HD,Ngay_Hoan_Thanh,Han_BH,Ghi_Chu,FileName,ID_THIET_BI,ID_BENH_VIEN,ID_NGUOI_PHU_TRACH,ID_NHAN_VIEN_KY_THUAT")] HOP_DONG hOP_DONG)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace QuanLyVT.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_HOP_DONG,Ma_HD,Ngay_Hoan_Thanh,Han_BH,Ghi_Chu,FileName,ID_THIET_BI,ID_BENH_VIEN,ID_NGUOI_PHU_TRACH,ID_NHAN_VIEN_KY_THUAT")] HOP_DONG hOP_DONG)
+        public ActionResult Edit([Bind(Include = "ID_HOP_DONG,Ma_HD,TEN_HD,Ngay_Hoan_Thanh,Han_BH,Ghi_Chu,FileName,ID_THIET_BI,ID_BENH_VIEN,ID_NGUOI_PHU_TRACH,ID_NHAN_VIEN_KY_THUAT")] HOP_DONG hOP_DONG)
         {
             if (ModelState.IsValid)
             {
@@ -134,9 +134,9 @@ namespace QuanLyVT.Controllers
         }
 
         [HttpGet]
-        public ActionResult UploadFile(string id)
+        public ActionResult UploadFile(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -158,13 +158,13 @@ namespace QuanLyVT.Controllers
                 {
                     string _FileName = System.IO.Path.GetFileName(file.FileName);
                     string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
-                    HOP_DONG hop_Dong2 = db.HOP_DONG.Find(hop_Dong.Ma_HD);
+                    HOP_DONG hop_Dong2 = db.HOP_DONG.Find(hop_Dong.ID_HOP_DONG);
                     hop_Dong2.FileName = _FileName;
 
                     db.SaveChanges();
                 }
                 ViewBag.Message = "Tải tệp tin thành công!!";
-                return View();
+                return RedirectToAction("Index");
             }
             catch
             {
