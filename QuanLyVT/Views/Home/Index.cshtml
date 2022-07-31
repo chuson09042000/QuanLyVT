@@ -1,9 +1,10 @@
-﻿@{
+﻿@model QuanLyVT.Models.NGUOI_DUNG
+@{
     ViewBag.Title = "Trang Chủ";
 }
 
 <div class="jumbotron"  style="height: 550px">
-    <h4 class="center" style="font-weight: bold; text-align:center"> Chào mừng bạn đến với phần mềm quản lý thiết bị y tế thanh trúc!!</h4>
+    <h4 class="center" style="font-weight: bold; text-align:center"> Chào mừng @Html.DisplayNameFor(model => model.Ten_Nguoi_Dung) đến với phần mềm quản lý thiết bị y tế thanh trúc!!</h4>
     
 </div>
 

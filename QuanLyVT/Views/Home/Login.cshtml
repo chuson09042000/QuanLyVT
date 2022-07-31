@@ -1,4 +1,4 @@
-﻿
+﻿@model QuanLyVT.Models.Login
 @{
     ViewBag.Title = "Login";
     Layout = null;
@@ -56,41 +56,57 @@
                                         </h4>
 
                                         <div class="space-6"></div>
+                                        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                                            {
+                                                <form>
+                                                    <fieldset>
+                                                        <label class="block clearfix">
+                                                            <span class="block input-icon input-icon-right">
+                                                                @*<input type="text" class="form-control" placeholder="Username" />*@
+                                                                @Html.TextBoxFor(model => model.Username, new { @class = "form-control", @autofocus = "autofocus" })
+                                                                <span style="color:red">
+                                                                    @Html.ValidationMessage("Username", "", "text-danger")
+                                                                </span>
+                                                                <i class="ace-icon fa fa-user"></i>
+                                                            </span>
+                                                        </label>
 
-                                        <form>
-                                            <fieldset>
-                                                <label class="block clearfix">
-                                                    <span class="block input-icon input-icon-right">
-                                                        <input type="text" class="form-control" placeholder="Username" />
-                                                        <i class="ace-icon fa fa-user"></i>
-                                                    </span>
-                                                </label>
+                                                        <label class="block clearfix">
+                                                            <span class="block input-icon input-icon-right">
+                                                                @*<input type="password" class="form-control" placeholder="Password" />*@
+                                                                @Html.PasswordFor(model => model.Password, new { @class = "form-control", @autofocus = "autofocus" })
 
-                                                <label class="block clearfix">
-                                                    <span class="block input-icon input-icon-right">
-                                                        <input type="password" class="form-control" placeholder="Password" />
-                                                        <i class="ace-icon fa fa-lock"></i>
-                                                    </span>
-                                                </label>
+                                                                <span style="color:red">
+                                                                    @Html.ValidationMessage("Password", "", "text-danger")
+                                                                </span>
+                                                                <i class="ace-icon fa fa-lock"></i>
+                                                            </span>
+                                                        </label>
+                                                        @*@Html.ValidationSummary(false, "", "error")*@
+                                                        <div class="space"></div>
 
-                                                <div class="space"></div>
+                                                        <div class="clearfix">
+                                                            <label class="inline">
+                                                                @*<input type="checkbox" class="ace" />*@
+                                                                @Html.CheckBoxFor(model => model.RememberMe)
+                                                                <span class="lbl"> Ghi nhớ</span>
 
-                                                <div class="clearfix">
-                                                    <label class="inline">
-                                                        <input type="checkbox" class="ace" />
-                                                        <span class="lbl"> Remember Me</span>
-                                                    </label>
+                                                            </label>
+                                                            @*<a href="/Home/Index" class="width-35 pull-right btn btn-sm btn-primary">
+                <i class="ace-icon fa fa-key"></i>
+                <span class="bigger-110">Login</span>
 
-                                                    <a href="/Home/Index"  class="width-35 pull-right btn btn-sm btn-primary">
-                                                        <i class="ace-icon fa fa-key"></i>
-                                                        <span class="bigger-110">Login</span>
+            </a>*@
+                                                            <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+                                                                Đăng nhập
+                                                            </button>
+                                                        </div>
 
-                                                    </a>
-                                                </div>
+                                                        <div class="space-4"></div>
+                                                    </fieldset>
+                                                </form>
+                                            }
 
-                                                <div class="space-4"></div>
-                                            </fieldset>
-                                        </form>
 
                                         <div class="social-or-login center">
                                             <span class="bigger-110">Or Login Using</span>

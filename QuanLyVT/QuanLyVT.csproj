@@ -129,6 +129,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Encode.cs" />
+    <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\BAO_TRIController.cs" />
     <Compile Include="Controllers\BENH_VIENController.cs" />
     <Compile Include="Controllers\DVTsController.cs" />
@@ -152,6 +155,7 @@
     <Compile Include="Models\GOI_THAU.cs" />
     <Compile Include="Models\HOP_DONG.cs" />
     <Compile Include="Models\LINH_KIEN.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\NGUOI_DUNG.cs" />
     <Compile Include="Models\NGUOI_PHU_TRACH.cs" />
@@ -160,6 +164,7 @@
     <Compile Include="Models\SUA_CHUA.cs" />
     <Compile Include="Models\THIET_BI.cs" />
     <Compile Include="Models\TINH_TRANG.cs" />
+    <Compile Include="Models\UserDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
