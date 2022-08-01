@@ -26,6 +26,8 @@ namespace QuanLyVT.Models
         [StringLength(200)]
         public string TEN_HD { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Ngay_Hoan_Thanh { get; set; }
 
         [Required]
@@ -45,6 +47,7 @@ namespace QuanLyVT.Models
         public int ID_NGUOI_PHU_TRACH { get; set; }
 
         public int ID_NHAN_VIEN_KY_THUAT { get; set; }
+
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BAO_TRI> BAO_TRI { get; set; }
