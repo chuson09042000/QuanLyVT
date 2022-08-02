@@ -116,7 +116,7 @@
             <th>
                 Ghi chú
             </th>
-            <th>
+            <th style="width:40px">
                 File
             </th>
             <th style="text-align: center">
@@ -156,14 +156,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Ghi_Chu)
             </td>
-            <td>
+            <td style="width:40px">
                 <a href="UploadedFiles\@Html.DisplayFor(modelItem => item.FileName)" download> @Html.DisplayFor(modelItem => item.FileName)</a>
             </td>
-            <td style="width: 300px">
-                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.ID_HOP_DONG }, new { @class = "btn btn-warning", Styles = "color:white; with: 90px !important" })
+            <td style="width: 500px">
+                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.ID_HOP_DONG }, new { @class = "btn btn-warning", Styles = "color:white; with: 70px !important" })
                 @Html.ActionLink("Chi tiết", "Details", new { id = item.ID_HOP_DONG }, new { @class = "btn btn-info", Styles = "color:white" })
                 @Html.ActionLink("Xóa", "Delete", new { id = item.ID_HOP_DONG }, new { @class = "btn btn-danger", Styles = "color:white" })
-                @Html.ActionLink("Tải File", "UploadFile", new { id = item.ID_HOP_DONG }, new { @class = "btn btn-success", Styles = "color:white; with: 60px !important" })
+                @Html.ActionLink("Tải File", "UploadFile", new { id = item.ID_HOP_DONG }, new { @class = "btn btn-success", @styles = "color:red; with: 50px !important" })
             </td>
         </tr>
         }

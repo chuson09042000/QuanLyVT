@@ -6,7 +6,7 @@ namespace QuanLyVT.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class THIET_BI
+    public class THIET_BI
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public THIET_BI()
@@ -17,7 +17,7 @@ namespace QuanLyVT.Models
         }
 
         [Key]
-        public int ID_THIET_BI { get; set; }
+        public  int ID_THIET_BI { get; set; }
 
         [Required]
         [StringLength(10)]

@@ -1,19 +1,36 @@
-﻿@model QuanLyVT.Models.THIET_BI
+﻿@model  QuanLyVT.Models.THIET_BI
 @{
     ViewBag.Title = "ThongKeTB";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ThongKeTB</h2>
-@using (Html.BeginForm("ThongKeTB", "ThongKeThietBi", FormMethod.Get)) // -- phần thay đổi
+<h2 style="text-align: center">Thống kê </h2>
+
+@using (Html.BeginForm("ViewThongKe", "ThongKeThietBi", FormMethod.Get)) // -- phần thay đổi
 {
+
     <div class="form-group">
-        @Html.LabelFor(model => model.ID_THIET_BI, "Tên thiết bị", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("ID_THIET_BI", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ID_THIET_BI, "", new { @class = "text-danger" })
+        <label class="col-md-3" style="margin-top:10px">Thống kê theo thiết bị</label>
+        <div class="col-md-9">
+            @Html.DropDownList("ID_THIET_BI", null, "------Chọn hợp đồng------", htmlAttributes: new { @class = "form-control", @style = " margin: 5px" })
+
         </div>
     </div>
-    <button type="submit" class="btn btn-info btn-sm"><b>Thống kê</b></button>
+    <div class="form-group">
+        <label class="col-md-3" style="margin-top:10px">Thống kê theo hợp đồng</label>
+        <div class="col-md-9">
+            @Html.DropDownList("ID_HOP_DONG", null, "------Chọn hợp đồng------", htmlAttributes: new { @class = "form-control", @style = " margin: 5px" })
 
+        </div>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-info btn-sm" style="margin-left:650px"><b>Thống kê</b></button>
+    if (ViewBag.ErrorMessage != null)
+    {
+        <h5 style="color:red">@ViewBag.ErrorMessage</h5>
+    }
 }
+
+

@@ -169,6 +169,7 @@
     <Compile Include="Controllers\PHAN_QUYENController.cs" />
     <Compile Include="Controllers\SUA_CHUAController.cs" />
     <Compile Include="Controllers\THIET_BIController.cs" />
+    <Compile Include="Controllers\ThongKeTBRiengController.cs" />
     <Compile Include="Controllers\ThongKeThietBiController.cs" />
     <Compile Include="Controllers\TINH_TRANGController.cs" />
     <Compile Include="Global.asax.cs">
@@ -182,6 +183,7 @@
     <Compile Include="Models\LINH_KIEN.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\modelThongKe.cs" />
     <Compile Include="Models\NGUOI_DUNG.cs" />
     <Compile Include="Models\NGUOI_PHU_TRACH.cs" />
     <Compile Include="Models\NHAN_VIEN_KY_THUAT.cs" />
@@ -451,6 +453,8 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\HOP_DONG\UploadFile.cshtml" />
     <Content Include="Views\ThongKeThietBi\ThongKeTB.cshtml" />
+    <Content Include="Views\ThongKeTBRieng\Index.cshtml" />
+    <Content Include="Views\ThongKeThietBi\ViewThongKe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
