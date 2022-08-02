@@ -11,16 +11,16 @@ namespace QuanLyVT.Models
         [Key]
         public int ID_NGUOI_DUNG { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 10, ErrorMessage = "?? dài không ???c v??t quá 10 ký t?")]
         public string Ma_Nguoi_Dung { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 50, ErrorMessage = "?? dài không ???c v??t quá 50 ký t?")]
         public string Ten_Nguoi_Dung { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 50, ErrorMessage = "?? dài không ???c v??t quá 50 ký t?")]
         public string Mat_Khau { get; set; }
 
         public int ID_PHAN_QUYEN { get; set; }

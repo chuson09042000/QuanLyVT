@@ -17,20 +17,21 @@ namespace QuanLyVT.Models
         [Key]
         public int ID_LINH_KIEN { get; set; }
 
-        [Required]
-        [StringLength(15)]
+        //[Required]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 15, ErrorMessage = "?? dài không ???c v??t quá 15 ký t?")]
         public string Ma_So_LK { get; set; }
-
-        [Required]
-        [StringLength(200)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        //[Required]
+        [StringLength(maximumLength: 200, ErrorMessage = "?? dài không ???c v??t quá 10 ký t?")]
         public string Ten_LK { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 50, ErrorMessage = "?? dài không ???c v??t quá 50 ký t?")]
         public string XX_TC { get; set; }
-
-        [Required]
-        [StringLength(10)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        //[Required]
+        [StringLength(maximumLength: 10, ErrorMessage = "?? dài không ???c v??t quá 10 ký t?")]
         public string Nam_SX { get; set; }
 
         public int ID_DVT { get; set; }

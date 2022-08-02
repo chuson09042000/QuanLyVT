@@ -123,10 +123,18 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            BENH_VIEN bENH_VIEN = db.BENH_VIEN.Find(id);
-            db.BENH_VIEN.Remove(bENH_VIEN);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                BENH_VIEN bENH_VIEN = db.BENH_VIEN.Find(id);
+                db.BENH_VIEN.Remove(bENH_VIEN);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["ResultMessage"] = "Dữ liệu đang được sử dụng trong hệ thống không thể xóa!!";
+                return RedirectToAction("Delete");
+            }
         }
 
         protected override void Dispose(bool disposing)

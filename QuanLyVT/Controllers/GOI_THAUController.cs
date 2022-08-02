@@ -48,13 +48,24 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_GOI_THAU,Ma_Goi_Thau,Ten_Goi_Thau,Du_An")] GOI_THAU gOI_THAU)
         {
-            if (ModelState.IsValid)
-            {
-                db.GOI_THAU.Add(gOI_THAU);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            var dvt = from bv in db.GOI_THAU
+                      select bv;
 
+            dvt = dvt.Where(x => x.Ma_Goi_Thau == gOI_THAU.Ma_Goi_Thau);
+            if (dvt.Count() > 0)
+            {
+                ViewBag.ErrorMessage = "Mã gói thầu không được trùng!";
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.GOI_THAU.Add(gOI_THAU);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
             return View(gOI_THAU);
         }
 
@@ -109,11 +120,19 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            GOI_THAU gOI_THAU = db.GOI_THAU.Find(id);
-            db.GOI_THAU.Remove(gOI_THAU);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            try
+            {              
+                GOI_THAU gOI_THAU = db.GOI_THAU.Find(id);
+                db.GOI_THAU.Remove(gOI_THAU);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["ResultMessage"] = "Dữ liệu đang được sử dụng trong hệ thống không thể xóa!!";
+                return RedirectToAction("Delete");
+            }
+}
 
         protected override void Dispose(bool disposing)
         {

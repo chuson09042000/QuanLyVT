@@ -51,15 +51,28 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_LINH_KIEN,Ma_So_LK,Ten_LK,XX_TC,Nam_SX,ID_DVT,ID_TINH_TRANG")] LINH_KIEN lINH_KIEN)
         {
-            if (ModelState.IsValid)
-            {
-                db.LINH_KIEN.Add(lINH_KIEN);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            ViewBag.ID_DVT = new SelectList(db.DVTs, "ID_DVT", "Ma_DVT", lINH_KIEN.ID_DVT);
-            ViewBag.ID_TINH_TRANG = new SelectList(db.TINH_TRANG, "ID_TINHTRANG", "Ten_TT_LK", lINH_KIEN.ID_TINH_TRANG);
+            var dvt = from bv in db.LINH_KIEN
+                      select bv;
+
+            dvt = dvt.Where(x => x.Ma_So_LK == lINH_KIEN.Ma_So_LK);
+            if (dvt.Count() > 0)
+            {
+                ViewBag.ErrorMessage = "Mã linh kiện không được trùng!";
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.LINH_KIEN.Add(lINH_KIEN);
+                    db.SaveChanges();
+                    TempData["success"] = "Thêm mới thành công!";
+                    return RedirectToAction("Index");
+                }
+            }
+            //ViewBag.ID_DVT = new SelectList(db.DVTs, "ID_DVT", "Ma_DVT", lINH_KIEN.ID_DVT);
+            //ViewBag.ID_TINH_TRANG = new SelectList(db.TINH_TRANG, "ID_TINHTRANG", "Ten_TT_LK", lINH_KIEN.ID_TINH_TRANG);
             return View(lINH_KIEN);
         }
 
@@ -118,11 +131,21 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            try
+            {
+
+            
             LINH_KIEN lINH_KIEN = db.LINH_KIEN.Find(id);
             db.LINH_KIEN.Remove(lINH_KIEN);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+            catch
+            {
+                TempData["ResultMessage"] = "Dữ liệu đang được sử dụng trong hệ thống không thể xóa!!";
+                return RedirectToAction("Delete");
+    }
+}
 
         protected override void Dispose(bool disposing)
         {

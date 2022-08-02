@@ -48,13 +48,24 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_TINHTRANG,Ma_TT_LK,Ten_TT_LK")] TINH_TRANG tINH_TRANG)
         {
-            if (ModelState.IsValid)
-            {
-                db.TINH_TRANG.Add(tINH_TRANG);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            var dvt = from bv in db.TINH_TRANG
+                      select bv;
 
+            dvt = dvt.Where(x => x.Ma_TT_LK == tINH_TRANG.Ma_TT_LK);
+            if (dvt.Count() > 0)
+            {
+                ViewBag.ErrorMessage = "Mã nhân viên không được trùng!";
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.TINH_TRANG.Add(tINH_TRANG);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
             return View(tINH_TRANG);
         }
 
@@ -109,10 +120,17 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            try { 
             TINH_TRANG tINH_TRANG = db.TINH_TRANG.Find(id);
             db.TINH_TRANG.Remove(tINH_TRANG);
             db.SaveChanges();
             return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["ResultMessage"] = "Dữ liệu đang được sử dụng trong hệ thống không thể xóa!!";
+                return RedirectToAction("Delete");
+            }
         }
 
         protected override void Dispose(bool disposing)

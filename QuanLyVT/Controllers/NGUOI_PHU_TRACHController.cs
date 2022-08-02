@@ -51,12 +51,24 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_NGUOI_PHU_TRACH,Ma_Nguoi_Phu_Trach,Ten_Nguoi_Phu_Trach,Ma_BV,Chuc_Vu,So_Dien_Thoai,ID_BENH_VIEN")] NGUOI_PHU_TRACH nGUOI_PHU_TRACH)
         {
-            nGUOI_PHU_TRACH.Ma_BV = "a";
-            if (ModelState.IsValid)
+            var dvt = from bv in db.NGUOI_PHU_TRACH
+                      select bv;
+
+            dvt = dvt.Where(x => x.Ma_Nguoi_Phu_Trach == nGUOI_PHU_TRACH.Ma_Nguoi_Phu_Trach);
+            if (dvt.Count() > 0)
             {
-                db.NGUOI_PHU_TRACH.Add(nGUOI_PHU_TRACH);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.ErrorMessage = "Mã người phụ trách không được trùng!";
+                return View();
+            }
+            else
+            {
+                nGUOI_PHU_TRACH.Ma_BV = "a";
+                if (ModelState.IsValid)
+                {
+                    db.NGUOI_PHU_TRACH.Add(nGUOI_PHU_TRACH);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             //ViewBag.ID_THIET_BI = new SelectList(db.HOP_DONG, "ID_THIET_BI", "Ten_TB", nGUOI_PHU_TRACH.ID_HOP_DONG);
             //ViewBag.Ma_BV = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ma_BV", nGUOI_PHU_TRACH.ID_BENH_VIEN);
@@ -118,10 +130,17 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            try { 
             NGUOI_PHU_TRACH nGUOI_PHU_TRACH = db.NGUOI_PHU_TRACH.Find(id);
             db.NGUOI_PHU_TRACH.Remove(nGUOI_PHU_TRACH);
             db.SaveChanges();
             return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["ResultMessage"] = "Dữ liệu đang được sử dụng trong hệ thống không thể xóa!!";
+                return RedirectToAction("Delete");
+            }
         }
 
         protected override void Dispose(bool disposing)

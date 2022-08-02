@@ -17,19 +17,19 @@ namespace QuanLyVT.Models
         [Key]
         public int ID_NHAN_VIEN_KY_THUAT { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 10, ErrorMessage = "?? dài không ???c v??t quá 10 ký t?")]
         public string Ma_NV_KT { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 50, ErrorMessage = "?? dài không ???c v??t quá 10 ký t?")]
         public string Ten_NV_KT { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 50, ErrorMessage = "?? dài không ???c v??t quá 50 ký t?")]
         public string Chuc_Vu { get; set; }
 
-        [StringLength(12)]
+        [StringLength(maximumLength: 12, ErrorMessage = "?? dài không ???c v??t quá 12 ký t?")]
         public string So_Dien_Thoai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

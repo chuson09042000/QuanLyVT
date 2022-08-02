@@ -12,7 +12,7 @@
     <div class="form-group">
         <label class="col-md-3" style="margin-top:10px">Thống kê theo thiết bị</label>
         <div class="col-md-9">
-            @Html.DropDownList("ID_THIET_BI", null, "------Chọn hợp đồng------", htmlAttributes: new { @class = "form-control", @style = " margin: 5px" })
+            @Html.DropDownList("ID_THIET_BI", null, "------Chọn thiết bị------", htmlAttributes: new { @class = "form-control", @style = " margin: 5px" })
 
         </div>
     </div>
@@ -27,9 +27,9 @@
 
 
     <button type="submit" class="btn btn-info btn-sm" style="margin-left:650px"><b>Thống kê</b></button>
-    if (ViewBag.ErrorMessage != null)
+    if (TempData["ResultMessage"] != null)
     {
-        <h5 style="color:red">@ViewBag.ErrorMessage</h5>
+        <h5 style="color: red; margin-left: 500px">@TempData["ResultMessage"]</h5>
     }
 }
 

@@ -18,12 +18,12 @@ namespace QuanLyVT.Models
         [Key]
         public int ID_DVT { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength( maximumLength:10, ErrorMessage = "?? dài không ???c v??t quá 10 ký t?")]
         public string Ma_DVT { get; set; }
 
-        [Required]
-        [StringLength(20)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength( maximumLength:20, ErrorMessage = "?? dài không ???c v??t quá 20 ký t?")]
         public string Ten_DVT { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

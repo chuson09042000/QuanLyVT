@@ -27,7 +27,7 @@ namespace QuanLyVT.Controllers
         }
         public ActionResult ViewThongKe(int? ID_THIET_BI, int? ID_HOP_DONG)
         {
-            try
+            if(ID_THIET_BI != null || ID_HOP_DONG != null)
             {
                 if(ID_THIET_BI != null && ID_HOP_DONG == null)
                 {
@@ -46,10 +46,10 @@ namespace QuanLyVT.Controllers
                     }
                 }
             }
-            catch
+            else
             {
-                ViewBag.ErrorMessage = "Vui lòng chọn kiểu thống kê!";
-                return ThongKeTB();
+                TempData["ResultMessage"] = "Vui lòng chọn kiểu thống kê!";
+                return RedirectToAction("ThongKeTB");
             }
             return View();
         }

@@ -54,6 +54,10 @@
 
         <div class="form-actions no-color">
 
+            @if (TempData["ResultMessage"] != null)
+            {
+            <h5 style="color:red">@TempData["ResultMessage"]</h5>
+            }
             <input type="submit" value="Xóa" class="btn btn-danger" /> |
             <button type="button" class="btn btn-secondary">
                 @Html.ActionLink("Quay lại", "Index", new { @class = "btn btn-warning" }, new { @style = "color:blue !important" })

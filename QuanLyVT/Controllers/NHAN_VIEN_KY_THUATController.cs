@@ -48,13 +48,24 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_NHAN_VIEN_KY_THUAT,Ma_NV_KT,Ten_NV_KT,Chuc_Vu,So_Dien_Thoai")] NHAN_VIEN_KY_THUAT nHAN_VIEN_KY_THUAT)
         {
-            if (ModelState.IsValid)
-            {
-                db.NHAN_VIEN_KY_THUAT.Add(nHAN_VIEN_KY_THUAT);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            var dvt = from bv in db.NHAN_VIEN_KY_THUAT
+                      select bv;
 
+            dvt = dvt.Where(x => x.Ma_NV_KT == nHAN_VIEN_KY_THUAT.Ma_NV_KT);
+            if (dvt.Count() > 0)
+            {
+                ViewBag.ErrorMessage = "Mã nhân viên không được trùng!";
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.NHAN_VIEN_KY_THUAT.Add(nHAN_VIEN_KY_THUAT);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
             return View(nHAN_VIEN_KY_THUAT);
         }
 
@@ -109,10 +120,17 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            try { 
             NHAN_VIEN_KY_THUAT nHAN_VIEN_KY_THUAT = db.NHAN_VIEN_KY_THUAT.Find(id);
             db.NHAN_VIEN_KY_THUAT.Remove(nHAN_VIEN_KY_THUAT);
             db.SaveChanges();
             return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["ResultMessage"] = "Dữ liệu đang được sử dụng trong hệ thống không thể xóa!!";
+                return RedirectToAction("Delete");
+            }
         }
 
         protected override void Dispose(bool disposing)

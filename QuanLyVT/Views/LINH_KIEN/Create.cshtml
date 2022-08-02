@@ -80,7 +80,7 @@
         <div class="control-label col-md-2">Mã linh kiện</div>
         <div class="col-md-10">
             @Html.EditorFor(model => model.Ma_So_LK, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Ma_So_LK, "", new { @class = "text-danger" })
+            @Html.ValidationMessage("Ma_So_LK", "", new { @class = "text-danger" })
             @if (ViewBag.ErrorMessage != null)
             {
                 <h5 style="color:red">@ViewBag.ErrorMessage</h5>
@@ -93,7 +93,7 @@
         <div class="control-label col-md-2">Tên linh kiện</div>
         <div class="col-md-10">
             @Html.EditorFor(model => model.Ten_LK, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Ten_LK, "", new { @class = "text-danger" })
+            @Html.ValidationMessage("Ten_LK", "", new { @class = "text-danger" })
         </div>
     </div>
 

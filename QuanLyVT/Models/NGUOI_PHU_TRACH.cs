@@ -17,23 +17,23 @@ namespace QuanLyVT.Models
         [Key]
         public int ID_NGUOI_PHU_TRACH { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 10, ErrorMessage = "?? dài không ???c v??t quá 10 ký t?")]
         public string Ma_Nguoi_Phu_Trach { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 50, ErrorMessage = "?? dài không ???c v??t quá 50 ký t?")]
         public string Ten_Nguoi_Phu_Trach { get; set; }
 
         //[Required]
-        [StringLength(10)]
+        [StringLength(maximumLength: 10, ErrorMessage = "?? dài không ???c v??t quá 10 ký t?")]
         public string Ma_BV { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 50, ErrorMessage = "?? dài không ???c v??t quá 50 ký t?")]
         public string Chuc_Vu { get; set; }
 
-        [StringLength(12)]
+        [StringLength(maximumLength: 12, ErrorMessage = "?? dài không ???c v??t quá 10 ký t?")]
         public string So_Dien_Thoai { get; set; }
 
         public int ID_BENH_VIEN { get; set; }

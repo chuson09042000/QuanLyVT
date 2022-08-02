@@ -52,13 +52,24 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_THIET_BI,Ma_TB,Ten_TB,XX_TC,Nam_SX,ID_BENH_VIEN,ID_GOI_THAU,ID_LINH_KIEN")] THIET_BI tHIET_BI)
         {
-            if (ModelState.IsValid)
-            {
-                db.THIET_BI.Add(tHIET_BI);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            var dvt = from bv in db.THIET_BI
+                      select bv;
 
+            dvt = dvt.Where(x => x.Ma_TB == tHIET_BI.Ma_TB);
+            if (dvt.Count() > 0)
+            {
+                ViewBag.ErrorMessage = "Mã nhân viên không được trùng!";
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.THIET_BI.Add(tHIET_BI);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
             ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV", tHIET_BI.ID_BENH_VIEN);
             ViewBag.ID_GOI_THAU = new SelectList(db.GOI_THAU, "ID_GOI_THAU", "Ten_Goi_Thau", tHIET_BI.ID_GOI_THAU);
             ViewBag.ID_LINH_KIEN = new SelectList(db.LINH_KIEN, "ID_LINH_KIEN", "Ten_LK", tHIET_BI.ID_LINH_KIEN);
@@ -122,10 +133,17 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            try { 
             THIET_BI tHIET_BI = db.THIET_BI.Find(id);
             db.THIET_BI.Remove(tHIET_BI);
             db.SaveChanges();
             return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["ResultMessage"] = "Dữ liệu đang được sử dụng trong hệ thống không thể xóa!!";
+                return RedirectToAction("Delete");
+            }
         }
 
         protected override void Dispose(bool disposing)

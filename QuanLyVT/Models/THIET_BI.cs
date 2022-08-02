@@ -19,20 +19,20 @@ namespace QuanLyVT.Models
         [Key]
         public  int ID_THIET_BI { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 10, ErrorMessage = "?? dài không ???c v??t quá 10 ký t?")]
         public string Ma_TB { get; set; }
 
-        [Required]
-        [StringLength(200)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 200, ErrorMessage = "?? dài không ???c v??t quá 200 ký t?")]
         public string Ten_TB { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
         [StringLength(50)]
         public string XX_TC { get; set; }
 
-        [Required]
-        [StringLength(4)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 4, ErrorMessage = "?? dài không ???c v??t quá 4 ký t?")]
         public string Nam_SX { get; set; }
 
         public int ID_BENH_VIEN { get; set; }

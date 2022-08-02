@@ -18,26 +18,26 @@ namespace QuanLyVT.Models
         [Key]
         public int ID_HOP_DONG { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 50, ErrorMessage = "?? dài không ???c v??t quá 50 ký t?")]
         public string Ma_HD { get; set; }
 
-        [Required]
-        [StringLength(200)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 200, ErrorMessage = "?? dài không ???c v??t quá 200 ký t?")]
         public string TEN_HD { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Ngay_Hoan_Thanh { get; set; }
 
-        [Required]
-        [StringLength(20)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 20, ErrorMessage = "?? dài không ???c v??t quá 20 ký t?")]
         public string Han_BH { get; set; }
 
-        [StringLength(100)]
+        [StringLength(maximumLength: 100, ErrorMessage = "?? dài không ???c v??t quá 100 ký t?")]
         public string Ghi_Chu { get; set; }
 
-        [StringLength(500)]
+        [StringLength(maximumLength: 500, ErrorMessage = "?? dài không ???c v??t quá 500 ký t?")]
         public string FileName { get; set; }
 
         public int ID_THIET_BI { get; set; }

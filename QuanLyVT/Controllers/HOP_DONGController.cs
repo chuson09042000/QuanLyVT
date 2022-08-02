@@ -54,13 +54,25 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_HOP_DONG,Ma_HD,TEN_HD,Ngay_Hoan_Thanh,Han_BH,Ghi_Chu,FileName,ID_THIET_BI,ID_BENH_VIEN,ID_NGUOI_PHU_TRACH,ID_NHAN_VIEN_KY_THUAT")] HOP_DONG hOP_DONG)
         {
-            if (ModelState.IsValid)
-            {
-                db.HOP_DONG.Add(hOP_DONG);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
+            var dvt = from bv in db.HOP_DONG
+                      select bv;
+
+            dvt = dvt.Where(x => x.Ma_HD == hOP_DONG.Ma_HD);
+            if (dvt.Count() > 0)
+            {
+                ViewBag.ErrorMessage = "Mã hợp đồng không được trùng!";
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.HOP_DONG.Add(hOP_DONG);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
             ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV", hOP_DONG.ID_BENH_VIEN);
             ViewBag.ID_NGUOI_PHU_TRACH = new SelectList(db.NGUOI_PHU_TRACH, "ID_NGUOI_PHU_TRACH", "Ten_Nguoi_Phu_Trach", hOP_DONG.ID_NGUOI_PHU_TRACH);
             ViewBag.ID_NHAN_VIEN_KY_THUAT = new SelectList(db.NHAN_VIEN_KY_THUAT, "ID_NHAN_VIEN_KY_THUAT", "Ten_NV_KT", hOP_DONG.ID_NHAN_VIEN_KY_THUAT);
@@ -127,15 +139,24 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            HOP_DONG hOP_DONG = db.HOP_DONG.Find(id);
-            db.HOP_DONG.Remove(hOP_DONG);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            try
+            {
+                HOP_DONG hOP_DONG = db.HOP_DONG.Find(id);
+                db.HOP_DONG.Remove(hOP_DONG);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["ResultMessage"] = "Dữ liệu đang được sử dụng trong hệ thống không thể xóa!!";
+                return RedirectToAction("Delete");
+            }
+}
 
         [HttpGet]
         public ActionResult UploadFile(int id)
         {
+
             if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

@@ -10,6 +10,7 @@ using QuanLyVT.Models;
 
 namespace QuanLyVT.Controllers
 {
+    [HandleError]
     public class DVTsController : Controller
     {
         //private QLVT db = new QLVT();
@@ -49,13 +50,24 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_DVT,Ma_DVT,Ten_DVT")] DVT dVT)
         {
-            if (ModelState.IsValid)
-            {
-                db.DVTs.Add(dVT);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            var dvt = from bv in db.DVTs
+                           select bv;
 
+            dvt = dvt.Where(x => x.Ma_DVT == dVT.Ma_DVT);
+            if (dvt.Count() > 0)
+            {
+                ViewBag.ErrorMessage = "Mã đơn vị tính không được trùng!";
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.DVTs.Add(dVT);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
             return View(dVT);
         }
 
@@ -110,19 +122,41 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DVT dVT = db.DVTs.Find(id);
-            db.DVTs.Remove(dVT);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                DVT dVT = db.DVTs.Find(id);
+                db.DVTs.Remove(dVT);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["ResultMessage"] = "Dữ liệu đang được sử dụng trong hệ thống không thể xóa!!";
+                //DVT dvt = db.DVTs.Find(id);
+                return RedirectToAction("Delete"); 
+            }
         }
 
-        protected override void Dispose(bool disposing)
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
+        protected override void HandleUnknownAction(string actionName)
         {
-            if (disposing)
+            switch (actionName)
             {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+                case "DeleteConfirmed":
+                    this.RedirectToAction("DeleteConfirmed").ExecuteResult(this.ControllerContext);
+                    break;
+                default:
+                    this.RedirectToAction("Index").ExecuteResult(this.ControllerContext);
+                    break;
+            }    
+            
         }
     }
 }

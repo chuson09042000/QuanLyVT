@@ -50,11 +50,23 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_NGUOI_DUNG,Ma_Nguoi_Dung,Ten_Nguoi_Dung,Mat_Khau,ID_PHAN_QUYEN")] NGUOI_DUNG nGUOI_DUNG)
         {
-            if (ModelState.IsValid)
+            var dvt = from bv in db.NGUOI_DUNG
+                      select bv;
+
+            dvt = dvt.Where(x => x.Ma_Nguoi_Dung == nGUOI_DUNG.Ma_Nguoi_Dung);
+            if (dvt.Count() > 0)
             {
-                db.NGUOI_DUNG.Add(nGUOI_DUNG);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.ErrorMessage = "Mã người dùng không được trùng!";
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.NGUOI_DUNG.Add(nGUOI_DUNG);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.ID_PHAN_QUYEN = new SelectList(db.PHAN_QUYEN, "ID_PHAN_QUYEN", "Ten_Quyen", nGUOI_DUNG.ID_PHAN_QUYEN);
@@ -114,10 +126,19 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            try
+            {
+                
             NGUOI_DUNG nGUOI_DUNG = db.NGUOI_DUNG.Find(id);
             db.NGUOI_DUNG.Remove(nGUOI_DUNG);
             db.SaveChanges();
             return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["ResultMessage"] = "Dữ liệu đang được sử dụng trong hệ thống không thể xóa!!";
+                return RedirectToAction("Delete");
+            }
         }
 
         protected override void Dispose(bool disposing)
