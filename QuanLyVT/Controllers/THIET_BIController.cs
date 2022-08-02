@@ -39,9 +39,24 @@ namespace QuanLyVT.Controllers
         // GET: THIET_BI/Create
         public ActionResult Create()
         {
-            ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV");
-            ViewBag.ID_GOI_THAU = new SelectList(db.GOI_THAU, "ID_GOI_THAU", "Ten_Goi_Thau");
-            ViewBag.ID_LINH_KIEN = new SelectList(db.LINH_KIEN, "ID_LINH_KIEN", "Ten_LK");
+            List<BENH_VIEN> bvs = db.BENH_VIEN.ToList();
+            List<GOI_THAU> gts = db.GOI_THAU.ToList();
+            List<LINH_KIEN> lks = db.LINH_KIEN.ToList();
+
+            // Tạo SelectList
+            SelectList listBv = new SelectList(bvs, "ID_BENH_VIEN", "Ten_BV");
+            SelectList listGt = new SelectList(gts, "ID_GOI_THAU", "Ten_Goi_Thau");
+            SelectList listLk = new SelectList(lks, "ID_LINH_KIEN", "Ten_LK");
+
+            // Set vào ViewBag
+            ViewBag.BvList = listBv;
+            ViewBag.GtList = listGt;
+            ViewBag.LkList = listLk;
+
+
+            //ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV");
+            //ViewBag.ID_GOI_THAU = new SelectList(db.GOI_THAU, "ID_GOI_THAU", "Ten_Goi_Thau");
+            //ViewBag.ID_LINH_KIEN = new SelectList(db.LINH_KIEN, "ID_LINH_KIEN", "Ten_LK");
             return View();
         }
 
@@ -51,7 +66,21 @@ namespace QuanLyVT.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_THIET_BI,Ma_TB,Ten_TB,XX_TC,Nam_SX,ID_BENH_VIEN,ID_GOI_THAU,ID_LINH_KIEN")] THIET_BI tHIET_BI)
-        {
+            {
+            List<BENH_VIEN> bvs = db.BENH_VIEN.ToList();
+            List<GOI_THAU> gts = db.GOI_THAU.ToList();
+            List<LINH_KIEN> lks = db.LINH_KIEN.ToList();
+
+            // Tạo SelectList
+            SelectList listBv = new SelectList(bvs, "ID_BENH_VIEN", "Ten_BV");
+            SelectList listGt = new SelectList(gts, "ID_GOI_THAU", "Ten_Goi_Thau");
+            SelectList listLk = new SelectList(lks, "ID_LINH_KIEN", "Ten_LK");
+
+            // Set vào ViewBag
+            ViewBag.BvList = listBv;
+            ViewBag.GtList = listGt;
+            ViewBag.LkList = listLk;
+
             var dvt = from bv in db.THIET_BI
                       select bv;
 
@@ -70,9 +99,9 @@ namespace QuanLyVT.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV", tHIET_BI.ID_BENH_VIEN);
-            ViewBag.ID_GOI_THAU = new SelectList(db.GOI_THAU, "ID_GOI_THAU", "Ten_Goi_Thau", tHIET_BI.ID_GOI_THAU);
-            ViewBag.ID_LINH_KIEN = new SelectList(db.LINH_KIEN, "ID_LINH_KIEN", "Ten_LK", tHIET_BI.ID_LINH_KIEN);
+            //ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV", tHIET_BI.ID_BENH_VIEN);
+            //ViewBag.ID_GOI_THAU = new SelectList(db.GOI_THAU, "ID_GOI_THAU", "Ten_Goi_Thau", tHIET_BI.ID_GOI_THAU);
+            //ViewBag.ID_LINH_KIEN = new SelectList(db.LINH_KIEN, "ID_LINH_KIEN", "Ten_LK", tHIET_BI.ID_LINH_KIEN);
             return View(tHIET_BI);
         }
 
@@ -138,7 +167,7 @@ namespace QuanLyVT.Controllers
             db.THIET_BI.Remove(tHIET_BI);
             db.SaveChanges();
             return RedirectToAction("Index");
-            }
+                }
             catch
             {
                 TempData["ResultMessage"] = "Dữ liệu đang được sử dụng trong hệ thống không thể xóa!!";

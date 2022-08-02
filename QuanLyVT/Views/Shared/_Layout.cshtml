@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý tật tư - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    <link href="~/Content/toastr.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
     @Scripts.Render("~/bundles/modernizr")
     <style>
@@ -74,6 +75,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/toastr.js"></script>
     @RenderSection("scripts", required: false)
     <script>
         $(document).ready(function () {
@@ -105,38 +107,51 @@
             });
         });
     </script>
-    <script>
-        $(function () {
-            if ($('#success').val()) {
-                displayMessage($('#success').val(), 'success');
-            }
-            if ($('#info').val()) {
-                displayMessage($('#info').val(), 'info');
-            }
-            if ($('#warning').val()) {
-                displayMessage($('#warning').val(), 'warning');
-            }
-            if ($('#error').val()) {
-                displayMessage($('#error').val(), 'error');
-            }
-        });
-        var displayMessage = function (message, msgType) {
-            toastr.options = {
-                "closeButton": true,
-                "debug": false,
-                "positionClass": "toast-top-right",
-                "onClick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "8000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            };
-            toastr[msgType](message);
-        };
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        if ('@TempData["success"]' == "Thêm mới thành công!"){
+            toastr.success('Thêm mới thành công!');
+       }
+       else{ }
+    });
     </script>
+    @*@section Scripts{
+            <script>
+                $(function () {
+                    if ($('#success').val()) {
+                        displayMessage($('#success').val(), 'success');
+                    }
+                    if ($('#info').val()) {
+                        displayMessage($('#info').val(), 'info');
+                    }
+                    if ($('#warning').val()) {
+                        displayMessage($('#warning').val(), 'warning');
+                    }
+                    if ($('#error').val()) {
+                        displayMessage($('#error').val(), 'error');
+                    }
+                });
+                var displayMessage = function (message, msgType) {
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "positionClass": "toast-top-right",
+                        "onClick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "8000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    };
+                    toastr[msgType](message);
+                };
+            </script>
+        }*@
+
+
 </body>
 </html>

@@ -19,6 +19,10 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.Ma_Nguoi_Phu_Trach, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Ma_Nguoi_Phu_Trach, "", new { @class = "text-danger" })
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <h5 style="color:red">@ViewBag.ErrorMessage</h5>
+            }
         </div>
     </div>
 
@@ -52,8 +56,7 @@
         @Html.LabelFor(model => model.ID_BENH_VIEN, "Bệnh viện/ đối tác", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @*@Html.EditorFor(model => model.ID_BENH_VIEN, new { htmlAttributes = new { @class = "form-control" } })*@
-            @Html.DropDownList("ID_BENH_VIEN", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ID_BENH_VIEN, "", new { @class = "text-danger" })
+            @Html.DropDownList("ID_BENH_VIEN", (IEnumerable<SelectListItem>)ViewBag.BvList, new { @class = "form-control" })
         </div>
     </div>
     @Html.HiddenFor(model => model.BENH_VIEN.Ma_BV)

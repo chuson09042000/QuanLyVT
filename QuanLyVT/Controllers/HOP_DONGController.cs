@@ -40,10 +40,26 @@ namespace QuanLyVT.Controllers
         // GET: HOP_DONG/Create
         public ActionResult Create()
         {
-            ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV");
-            ViewBag.ID_NGUOI_PHU_TRACH = new SelectList(db.NGUOI_PHU_TRACH, "ID_NGUOI_PHU_TRACH", "Ten_Nguoi_Phu_Trach");
-            ViewBag.ID_NHAN_VIEN_KY_THUAT = new SelectList(db.NHAN_VIEN_KY_THUAT, "ID_NHAN_VIEN_KY_THUAT", "Ten_NV_KT");
-            ViewBag.ID_THIET_BI = new SelectList(db.THIET_BI, "ID_THIET_BI", "Ten_TB");
+            List<BENH_VIEN> bvs = db.BENH_VIEN.ToList();
+            List<THIET_BI> tbs = db.THIET_BI.ToList();
+            List<NGUOI_PHU_TRACH> npts = db.NGUOI_PHU_TRACH.ToList();
+            List<NHAN_VIEN_KY_THUAT> nvs = db.NHAN_VIEN_KY_THUAT.ToList();
+
+            // Tạo SelectList
+            SelectList listBv = new SelectList(bvs, "ID_BENH_VIEN", "Ten_BV");
+            SelectList listTb = new SelectList(tbs, "ID_THIET_BI", "Ten_TB");
+            SelectList listNpt = new SelectList(npts, "ID_NGUOI_PHU_TRACH", "Ten_Nguoi_Phu_Trach");
+            SelectList listNv = new SelectList(nvs, "ID_NHAN_VIEN_KY_THUAT", "Ten_NV_KT");
+
+            // Set vào ViewBag
+            ViewBag.BvList = listBv;
+            ViewBag.TbList = listTb;
+            ViewBag.NptList = listNpt;
+            ViewBag.NvList = listNv;
+            //ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV");
+            //ViewBag.ID_NGUOI_PHU_TRACH = new SelectList(db.NGUOI_PHU_TRACH, "ID_NGUOI_PHU_TRACH", "Ten_Nguoi_Phu_Trach");
+            //ViewBag.ID_NHAN_VIEN_KY_THUAT = new SelectList(db.NHAN_VIEN_KY_THUAT, "ID_NHAN_VIEN_KY_THUAT", "Ten_NV_KT");
+            //ViewBag.ID_THIET_BI = new SelectList(db.THIET_BI, "ID_THIET_BI", "Ten_TB");
             return View();
         }
 
@@ -54,6 +70,23 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_HOP_DONG,Ma_HD,TEN_HD,Ngay_Hoan_Thanh,Han_BH,Ghi_Chu,FileName,ID_THIET_BI,ID_BENH_VIEN,ID_NGUOI_PHU_TRACH,ID_NHAN_VIEN_KY_THUAT")] HOP_DONG hOP_DONG)
         {
+
+            List<BENH_VIEN> bvs = db.BENH_VIEN.ToList();
+            List<THIET_BI> tbs = db.THIET_BI.ToList();
+            List<NGUOI_PHU_TRACH> npts = db.NGUOI_PHU_TRACH.ToList();
+            List<NHAN_VIEN_KY_THUAT> nvs = db.NHAN_VIEN_KY_THUAT.ToList();
+
+            // Tạo SelectList
+            SelectList listBv = new SelectList(bvs, "ID_BENH_VIEN", "Ten_BV");
+            SelectList listTb = new SelectList(tbs, "ID_THIET_BI", "Ten_TB");
+            SelectList listNpt = new SelectList(npts, "ID_NGUOI_PHU_TRACH", "Ten_Nguoi_Phu_Trach");
+            SelectList listNv = new SelectList(nvs, "ID_NHAN_VIEN_KY_THUAT", "Ten_NV_KT");
+
+            // Set vào ViewBag
+            ViewBag.BvList = listBv;
+            ViewBag.GtList = listTb;
+            ViewBag.LkList = listNpt;
+            ViewBag.LkList = listNv;
 
             var dvt = from bv in db.HOP_DONG
                       select bv;
@@ -73,10 +106,10 @@ namespace QuanLyVT.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV", hOP_DONG.ID_BENH_VIEN);
-            ViewBag.ID_NGUOI_PHU_TRACH = new SelectList(db.NGUOI_PHU_TRACH, "ID_NGUOI_PHU_TRACH", "Ten_Nguoi_Phu_Trach", hOP_DONG.ID_NGUOI_PHU_TRACH);
-            ViewBag.ID_NHAN_VIEN_KY_THUAT = new SelectList(db.NHAN_VIEN_KY_THUAT, "ID_NHAN_VIEN_KY_THUAT", "Ten_NV_KT", hOP_DONG.ID_NHAN_VIEN_KY_THUAT);
-            ViewBag.ID_THIET_BI = new SelectList(db.THIET_BI, "ID_THIET_BI", "Ten_TB", hOP_DONG.ID_THIET_BI);
+            //ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV", hOP_DONG.ID_BENH_VIEN);
+            //ViewBag.ID_NGUOI_PHU_TRACH = new SelectList(db.NGUOI_PHU_TRACH, "ID_NGUOI_PHU_TRACH", "Ten_Nguoi_Phu_Trach", hOP_DONG.ID_NGUOI_PHU_TRACH);
+            //ViewBag.ID_NHAN_VIEN_KY_THUAT = new SelectList(db.NHAN_VIEN_KY_THUAT, "ID_NHAN_VIEN_KY_THUAT", "Ten_NV_KT", hOP_DONG.ID_NHAN_VIEN_KY_THUAT);
+            //ViewBag.ID_THIET_BI = new SelectList(db.THIET_BI, "ID_THIET_BI", "Ten_TB", hOP_DONG.ID_THIET_BI);
             return View(hOP_DONG);
         }
 

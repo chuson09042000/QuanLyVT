@@ -39,8 +39,16 @@ namespace QuanLyVT.Controllers
         // GET: NGUOI_PHU_TRACH/Create
         public ActionResult Create()
         {
+            List<BENH_VIEN> bvs = db.BENH_VIEN.ToList();
+
+            // Tạo SelectList
+            SelectList listBv = new SelectList(bvs, "ID_BENH_VIEN", "Ten_BV");
+
+
+            // Set vào ViewBag
+            ViewBag.BvList = listBv;
             ViewBag.Ma_BV = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ma_BV");
-            ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV");
+            //ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV");
             return View();
         }
 
@@ -51,6 +59,14 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_NGUOI_PHU_TRACH,Ma_Nguoi_Phu_Trach,Ten_Nguoi_Phu_Trach,Ma_BV,Chuc_Vu,So_Dien_Thoai,ID_BENH_VIEN")] NGUOI_PHU_TRACH nGUOI_PHU_TRACH)
         {
+            List<BENH_VIEN> bvs = db.BENH_VIEN.ToList();
+
+            // Tạo SelectList
+            SelectList listBv = new SelectList(bvs, "ID_BENH_VIEN", "Ten_BV");
+
+            // Set vào ViewBag
+            ViewBag.BvList = listBv;
+
             var dvt = from bv in db.NGUOI_PHU_TRACH
                       select bv;
 
@@ -72,7 +88,7 @@ namespace QuanLyVT.Controllers
             }
             //ViewBag.ID_THIET_BI = new SelectList(db.HOP_DONG, "ID_THIET_BI", "Ten_TB", nGUOI_PHU_TRACH.ID_HOP_DONG);
             //ViewBag.Ma_BV = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ma_BV", nGUOI_PHU_TRACH.ID_BENH_VIEN);
-            ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV", nGUOI_PHU_TRACH.ID_BENH_VIEN);
+            //ViewBag.ID_BENH_VIEN = new SelectList(db.BENH_VIEN, "ID_BENH_VIEN", "Ten_BV", nGUOI_PHU_TRACH.ID_BENH_VIEN);
             return View(nGUOI_PHU_TRACH);
         }
 

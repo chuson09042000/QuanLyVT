@@ -51,7 +51,18 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_LINH_KIEN,Ma_So_LK,Ten_LK,XX_TC,Nam_SX,ID_DVT,ID_TINH_TRANG")] LINH_KIEN lINH_KIEN)
         {
+            List<DVT> bvs = db.DVTs.ToList();
+            List<TINH_TRANG> tbs = db.TINH_TRANG.ToList();
+            
 
+            // Tạo SelectList
+            SelectList listBv = new SelectList(bvs, "ID_DVT", "Ma_DVT");
+            SelectList listTb = new SelectList(tbs, "ID_TINHTRANG", "Ten_TT_LK");
+           
+            // Set vào ViewBag
+            ViewBag.DvtList = listBv;
+            ViewBag.TtList = listTb;
+           
             var dvt = from bv in db.LINH_KIEN
                       select bv;
 
