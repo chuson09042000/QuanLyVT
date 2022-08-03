@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,9 +8,6 @@ namespace QuanLyVT.Models
 {
     public class modelThongKe 
     {
-        //thêm trươờng nào mày cânf vào
-        // có cần kiểu dữ liệu ko
-        //có chưứ ý nvarrcha
         public string Ten_BV { get; set; }
         public string Ten_Nguoi_Phu_Trach { get; set; }
         public string Ten_NV_KT { get; set; }
@@ -34,5 +32,29 @@ namespace QuanLyVT.Models
         public int ID_GOI_THAU { get; set; }
 
         public int ID_LINH_KIEN { get; set; }
+
+        public string Ma_HD { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Ngay_Hoan_Thanh { get; set; }
+
+
+        public string Han_BH { get; set; }
+
+
+        public string Ghi_Chu { get; set; }
+
+
+        public string FileName { get; set; }
+
+       
+
+        public int ID_NGUOI_PHU_TRACH { get; set; }
+
+        public int ID_NHAN_VIEN_KY_THUAT { get; set; }
+       
+        public string Ten_LK { get; set; }
+        public string Ten_TT_LK { get; set; }
     }
 }

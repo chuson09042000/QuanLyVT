@@ -183,6 +183,7 @@
     <Compile Include="Models\LINH_KIEN.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\modelHopDong.cs" />
     <Compile Include="Models\modelThongKe.cs" />
     <Compile Include="Models\NGUOI_DUNG.cs" />
     <Compile Include="Models\NGUOI_PHU_TRACH.cs" />
@@ -461,6 +462,7 @@
     <Content Include="Views\ThongKeThietBi\ThongKeTB.cshtml" />
     <Content Include="Views\ThongKeTBRieng\Index.cshtml" />
     <Content Include="Views\ThongKeThietBi\ViewThongKe.cshtml" />
+    <Content Include="Views\ThongKeThietBi\ViewThongKeHD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

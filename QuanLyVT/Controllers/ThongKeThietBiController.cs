@@ -33,6 +33,7 @@ namespace QuanLyVT.Controllers
                 {
                     if (ID_THIET_BI != null)
                     {
+                        ViewBag.checkTBorHD = "ThietBi";
                         var list = db.Database.SqlQuery<modelThongKe>("ThongKeTheoThietBi @idThietBi", new SqlParameter("@idThietBi", (int?)ID_THIET_BI)).ToList();
                         return View(list);
                     }
@@ -41,11 +42,22 @@ namespace QuanLyVT.Controllers
                 {
                     if (ID_HOP_DONG != null)
                     {
-                        var listhd = db.Database.SqlQuery<modelThongKe>("ThongKeTheoThietBi @idHopDong", new SqlParameter("@idHopDong", (int?)ID_HOP_DONG)).ToList();
+                        ViewBag.checkTBorHD = "HopDong";
+                        var listhd = db.Database.SqlQuery<modelThongKe>("ThongKeTheoHopDong @idHopDong", new SqlParameter("@idHopDong", (int?)ID_HOP_DONG)).ToList();
                         return View(listhd);
                     }
                 }
-            }
+                else if (ID_THIET_BI != null && ID_HOP_DONG != null)
+                {
+                    TempData["ResultMessage"] = "Vui lòng chọn thống kê theo thiết bị hoặc thống kê theo hợp đồng!";
+                    return RedirectToAction("ThongKeTB");
+                }
+                else
+                {
+                    TempData["ResultMessage"] = "Có lỗi trong quá trình thống kê. Vui lòng thử lại sau!";
+                    return RedirectToAction("ThongKeTB");
+                }
+            } 
             else
             {
                 TempData["ResultMessage"] = "Vui lòng chọn kiểu thống kê!";

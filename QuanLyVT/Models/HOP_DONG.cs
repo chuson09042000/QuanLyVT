@@ -27,7 +27,7 @@ namespace QuanLyVT.Models
         public string TEN_HD { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Ngay_Hoan_Thanh { get; set; }
 
         [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
