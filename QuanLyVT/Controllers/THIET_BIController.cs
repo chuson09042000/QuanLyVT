@@ -87,7 +87,7 @@ namespace QuanLyVT.Controllers
             dvt = dvt.Where(x => x.Ma_TB == tHIET_BI.Ma_TB);
             if (dvt.Count() > 0)
             {
-                ViewBag.ErrorMessage = "Mã nhân viên không được trùng!";
+                ViewBag.ErrorMessage = "Mã thiết bị không được trùng!";
                 return View();
             }
             else

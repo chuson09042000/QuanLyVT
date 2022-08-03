@@ -68,7 +68,7 @@ namespace QuanLyVT.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_HOP_DONG,Ma_HD,TEN_HD,Ngay_Hoan_Thanh,Han_BH,Ghi_Chu,FileName,ID_THIET_BI,ID_BENH_VIEN,ID_NGUOI_PHU_TRACH,ID_NHAN_VIEN_KY_THUAT")] HOP_DONG hOP_DONG)
+        public ActionResult Create([Bind(Include = "ID_HOP_DONG,Ma_HD,TEN_HD,Ngay_Hoan_Thanh,Han_BH,Ghi_Chu,FileName,ID_THIET_BI,ID_BENH_VIEN,ID_NGUOI_PHU_TRACH,ID_NHAN_VIEN_KY_THUAT,So_Luong")] HOP_DONG hOP_DONG)
         {
 
             List<BENH_VIEN> bvs = db.BENH_VIEN.ToList();
@@ -84,9 +84,9 @@ namespace QuanLyVT.Controllers
 
             // Set vào ViewBag
             ViewBag.BvList = listBv;
-            ViewBag.GtList = listTb;
-            ViewBag.LkList = listNpt;
-            ViewBag.LkList = listNv;
+            ViewBag.TbList = listTb;
+            ViewBag.NptList = listNpt;
+            ViewBag.NvList = listNv;
 
             var dvt = from bv in db.HOP_DONG
                       select bv;

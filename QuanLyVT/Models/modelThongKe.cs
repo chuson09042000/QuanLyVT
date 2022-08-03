@@ -32,6 +32,7 @@ namespace QuanLyVT.Models
         public int ID_GOI_THAU { get; set; }
 
         public int ID_LINH_KIEN { get; set; }
+        public int So_Luong { get; set; }
 
         public string Ma_HD { get; set; }
 

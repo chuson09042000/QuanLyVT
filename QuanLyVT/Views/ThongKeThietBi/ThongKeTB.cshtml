@@ -10,7 +10,12 @@
 
 @using (Html.BeginForm("ViewThongKe", "ThongKeThietBi", FormMethod.Get)) // -- phần thay đổi
 {
-
+    <div class="col-md-12">
+        <label>Từ ngày</label>
+        <input type="date" id="tungay" name="tungay" />
+        <label style="margin-left:100px">Đến ngày</label>
+        <input type="date" id="dengay" name="dengay"/>
+    </div>
     <div class="form-group">
         <label class="col-md-3" style="margin-top:10px">Thống kê theo thiết bị</label>
         <div class="col-md-9">
@@ -25,7 +30,7 @@
 
         </div>
     </div>
-
+    
 
 
     <button type="submit" class="btn btn-info btn-sm" style="margin-left:650px"><b>Thống kê</b></button>

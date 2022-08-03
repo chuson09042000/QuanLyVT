@@ -175,6 +175,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208030841518_chetthithoi.cs" />
+    <Compile Include="Migrations\202208030841518_chetthithoi.designer.cs">
+      <DependentUpon>202208030841518_chetthithoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BAO_TRI.cs" />
     <Compile Include="Models\BENH_VIEN.cs" />
     <Compile Include="Models\DVT.cs" />
@@ -481,6 +486,9 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\202208030841518_chetthithoi.resx">
+      <DependentUpon>202208030841518_chetthithoi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="report\BaoCao.rdlc" />
   </ItemGroup>
   <PropertyGroup>

@@ -11,14 +11,16 @@ namespace QuanLyVT.Models
         [Key]
         public int ID_BAO_TRI { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 10, ErrorMessage = "?? dài không ???c v??t quá 10 ký t?")]
         public string Ma_Bao_Tri { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Ngay_Bao_Tri { get; set; }
 
-        [Required]
-        [StringLength(500)]
+        [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
+        [StringLength(maximumLength: 500, ErrorMessage = "?? dài không ???c v??t quá 500 ký t?")]
         public string LK_ThayThe { get; set; }
 
         public int ID_THIET_BI { get; set; }

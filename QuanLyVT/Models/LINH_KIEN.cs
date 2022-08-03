@@ -23,7 +23,7 @@ namespace QuanLyVT.Models
         public string Ma_So_LK { get; set; }
         [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]
         //[Required]
-        [StringLength(maximumLength: 200, ErrorMessage = "?? dài không ???c v??t quá 10 ký t?")]
+        [StringLength(maximumLength: 200, ErrorMessage = "?? dài không ???c v??t quá 200 ký t?")]
         public string Ten_LK { get; set; }
 
         [Required(ErrorMessage = "Thông tin này là b?t bu?c.")]

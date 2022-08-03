@@ -45,7 +45,7 @@
                 <th>
                     Năm sản xuất
                 </th>
-
+                
             </tr>
         </thead>
         <tbody>
@@ -84,7 +84,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Nam_SX)
                         </td>
-
+                       
 
                     </tr>
                 }
@@ -132,7 +132,9 @@ else
                 <th>
                     Hạn bảo hành
                 </th>
-
+                <th>
+                    Số lượng thiết bị
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -172,7 +174,9 @@ else
                         <td>
                             @Html.DisplayFor(modelItem => item.Han_BH)
                         </td>
-
+                        <td>
+                            @Html.DisplayFor(modelItem => item.So_Luong)
+                        </td>
 
                     </tr>
                 }

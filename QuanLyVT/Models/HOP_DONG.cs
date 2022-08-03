@@ -48,6 +48,7 @@ namespace QuanLyVT.Models
 
         public int ID_NHAN_VIEN_KY_THUAT { get; set; }
 
+        public int So_Luong { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BAO_TRI> BAO_TRI { get; set; }
