@@ -73,7 +73,7 @@
             @Html.LabelFor(model => model.ID_THIET_BI, "Tên thiết bị", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.DropDownList("ID_THIET_BI", null, htmlAttributes: new { @class = "form-control" })*@
-                @Html.DropDownList("ID_THIET_BI", (IEnumerable<SelectListItem>)ViewBag.TbList, new { @class = "form-control" })
+                @Html.DropDownList("ID_THIET_BI", (IEnumerable<SelectListItem>)ViewBag.TbList, "------Chọn thiết bị------", new { @class = "form-control" })
                 @*@Html.ValidationMessageFor(model => model.ID_THIET_BI, "", new { @class = "text-danger" })*@
             </div>
         </div>
@@ -82,7 +82,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ID_BENH_VIEN, "Tên bệnh viện/ đối tác", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ID_BENH_VIEN", (IEnumerable<SelectListItem>)ViewBag.BvList, new { @class = "form-control" })
+                @Html.DropDownList("ID_BENH_VIEN", (IEnumerable<SelectListItem>)ViewBag.BvList, "------Chọn bệnh viện/ đối tác------", new { @class = "form-control" })
                 @*@Html.ValidationMessageFor(model => model.ID_BENH_VIEN, "", new { @class = "text-danger" })*@
             </div>
         </div>
@@ -92,7 +92,7 @@
             <div class="col-md-10">
                 @*@Html.DropDownList("ID_NGUOI_PHU_TRACH", null, htmlAttributes: new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.ID_NGUOI_PHU_TRACH, "", new { @class = "text-danger" })*@
-                @Html.DropDownList("ID_NGUOI_PHU_TRACH", (IEnumerable<SelectListItem>)ViewBag.NptList, new { @class = "form-control" })
+                @Html.DropDownList("ID_NGUOI_PHU_TRACH", (IEnumerable<SelectListItem>)ViewBag.NptList, "------Chọn người phụ trách------", new { @class = "form-control" })
             </div>
         </div>
 
@@ -101,7 +101,7 @@
             <div class="col-md-10">
                 @*@Html.DropDownList("ID_NHAN_VIEN_KY_THUAT", null, htmlAttributes: new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.ID_NHAN_VIEN_KY_THUAT, "", new { @class = "text-danger" })*@
-                @Html.DropDownList("ID_NHAN_VIEN_KY_THUAT", (IEnumerable<SelectListItem>)ViewBag.NvList, new { @class = "form-control" })
+                @Html.DropDownList("ID_NHAN_VIEN_KY_THUAT", (IEnumerable<SelectListItem>)ViewBag.NvList, "------Chọn nhân viên kỹ thuật------", new { @class = "form-control" })
             </div>
         </div>
 

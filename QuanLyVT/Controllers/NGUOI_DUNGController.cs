@@ -39,7 +39,13 @@ namespace QuanLyVT.Controllers
         // GET: NGUOI_DUNG/Create
         public ActionResult Create()
         {
-            ViewBag.ID_PHAN_QUYEN = new SelectList(db.PHAN_QUYEN, "ID_PHAN_QUYEN", "Ten_Quyen");
+            List<PHAN_QUYEN> quyen = db.PHAN_QUYEN.ToList();
+
+            // Tạo SelectList
+            SelectList listQuyen = new SelectList(quyen, "ID_DVT", "Ma_DVT");
+
+            ViewBag.QuyenList = listQuyen;
+            //ViewBag.ID_PHAN_QUYEN = new SelectList(db.PHAN_QUYEN, "ID_PHAN_QUYEN", "Ten_Quyen");
             return View();
         }
 
@@ -50,6 +56,12 @@ namespace QuanLyVT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_NGUOI_DUNG,Ma_Nguoi_Dung,Ten_Nguoi_Dung,Mat_Khau,ID_PHAN_QUYEN")] NGUOI_DUNG nGUOI_DUNG)
         {
+            List<PHAN_QUYEN> quyen = db.PHAN_QUYEN.ToList();
+
+            // Tạo SelectList
+            SelectList listQuyen = new SelectList(quyen, "ID_DVT", "Ma_DVT");
+
+            ViewBag.QuyenList = listQuyen;
             var dvt = from bv in db.NGUOI_DUNG
                       select bv;
 
@@ -69,7 +81,7 @@ namespace QuanLyVT.Controllers
                 }
             }
 
-            ViewBag.ID_PHAN_QUYEN = new SelectList(db.PHAN_QUYEN, "ID_PHAN_QUYEN", "Ten_Quyen", nGUOI_DUNG.ID_PHAN_QUYEN);
+            //ViewBag.ID_PHAN_QUYEN = new SelectList(db.PHAN_QUYEN, "ID_PHAN_QUYEN", "Ten_Quyen", nGUOI_DUNG.ID_PHAN_QUYEN);
             return View(nGUOI_DUNG);
         }
 

@@ -119,8 +119,9 @@
        
         <div class="control-label col-md-2">Đơn vị tính</div>
         <div class="col-md-10">
-            @Html.DropDownList("ID_DVT", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ID_DVT, "", new { @class = "text-danger" })
+            @*@Html.DropDownList("ID_DVT", null, htmlAttributes: new { @class = "form-control" })*@
+            @Html.DropDownList("ID_DVT", (IEnumerable<SelectListItem>)ViewBag.DvList, "------Chọn đơn vị tính------", new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(model => model.ID_DVT, "", new { @class = "text-danger" })*@
         </div>
     </div>
 
@@ -128,8 +129,9 @@
       
         <div class="control-label col-md-2">Tình trạng</div>
         <div class="col-md-10">
-            @Html.DropDownList("ID_TINH_TRANG", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ID_TINH_TRANG, "", new { @class = "text-danger" })
+            @*@Html.DropDownList("ID_TINH_TRANG", null, htmlAttributes: new { @class = "form-control" })*@
+            @Html.DropDownList("ID_TINH_TRANG", (IEnumerable<SelectListItem>)ViewBag.TtList, "------Chọn tình trạng------", new { @class = "form-control" })
+            @*@Html.ValidationMessageFor(model => model.ID_TINH_TRANG, "", new { @class = "text-danger" })*@
         </div>
     </div>
 
